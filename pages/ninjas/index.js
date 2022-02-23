@@ -18,7 +18,7 @@ const indexNinjas = ({ninjas}) =>{
             <h1>Ninjas</h1>
                 {ninjas.map((ninja)=>(
                     <div key={ninja.id}>
-                        <Link href={`/ninja/${ninja.id}`} key={ninja.id}>
+                        <Link href={`/ninjas/${ninja.id}`} key={ninja.id}>
                             <a className={styles.single}><h3>{ninja.name}</h3></a>
                         </Link>            
                     </div>
