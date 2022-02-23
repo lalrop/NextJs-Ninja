@@ -14,10 +14,28 @@ export const getStaticPaths = async() =>{
     }
 }
 
-const NinjaId = () => {
+export const getStaticProps = async(context) => {
+    const id = context.params.id
+    const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
+    const data = await res.json()
+
+    return {
+        props:{
+            ninja: data
+        }
+    }
+
+}
+
+const NinjaId = ({ninja}) => {
     return (
         <div>
-            <h1>Ninja info!</h1> 
+            <h1>{ninja.name}</h1>
+            <h2>Alias: {ninja.username}</h2>
+            <ul>
+                <li>Email: {ninja.email}</li>
+                <li>Address: {ninja.address.street} | {ninja.address.suite} | {ninja.address.city}</li>
+            </ul>
         </div>
     )
 }
